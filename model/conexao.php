@@ -1,7 +1,7 @@
 <?php
 
 $servername = "localhost";
-$database = "formulario_estoque";
+$database = "teste-titan";
 $username = "root";
 $password = "";
 

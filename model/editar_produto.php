@@ -12,10 +12,8 @@ $id = $_GET['id'];
 
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
-   <title>Formulário de Cadastro</title>
-   <!-- CSS only -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+   <title>Formulário de Edição</title>
+
 
    <style type="text/css">
    #tamanhoContainer {
@@ -25,6 +23,15 @@ $id = $_GET['id'];
    #button-cadastrar {
       margin-top: 10px;
    }
+
+   .form-group {
+      padding-bottom: 20px;
+   }
+
+   .form-control {
+      width: 500px;
+      height: 30px;
+   }
    </style>
 
 
@@ -32,114 +39,88 @@ $id = $_GET['id'];
 
 <body>
 
-   <div class="container" id="tamanhoContainer" style="margin-top: 40px">
-      <h4>Formulário de Cadastro para Produtos</h4>
+   <center>
 
-      <form action="atualizar_produto.php" method="post" style="margin-top: 20px;">
+      <div class="container" id="tamanhoContainer" style="margin-top: 40px">
+         <h2>Formulário de Edição para Produtos</h2>
 
-         <?php
+         <a href="../view/listar_produtos.php">
+            <button style="background-color: #ededed;
+               color:black; font-size: 17px; font-weight: 600">Voltar aos Produtos</button>
+         </a>
 
-         $sql = "SELECT * FROM `estoque` WHERE id_estoque = $id";
+         <form action="atualizar_produto.php" method="post" style="margin-top: 20px;">
 
-         $buscar = mysqli_query($conexao, $sql);
+            <?php
 
-         while ($array = mysqli_fetch_array($buscar)) {
-            $id_estoque = $array['id_estoque'];
-            $id_produto = $array['idproduto'];
-            $nomeproduto = $array['nomeproduto'];
-            $quantidadeestoque = $array['quantidadeestoque'];
-            $categoriaproduto = $array['categoriaproduto'];
-            $marcaproduto = $array['marcaproduto']; ?>
+            $sql = "SELECT * FROM `estoque` WHERE preco = $id";
 
+            $buscar = mysqli_query($conexao, $sql);
 
-         <div class="form-group">
-            <label>ID do Produto</label>
-            <input type="number" name="idproduto" class="form-control" value="<?php echo $id_produto ?>" disabled>
-            <input type="number" name="id" class="form-control" value="<?php echo $id ?>" style="display: none">
-            <br>
-         </div>
-         <div class=" form-group">
-            <label>Nome Produto</label>
-            <input type="text" name="nomeproduto" class="form-control" value="<?php echo $nomeproduto ?>">
-            <br>
-         </div>
-
-         <div class=" form-group">
-            <label>Quantidade de Estoque</label>
-            <input type="number" name="quantidadeproduto" class="form-control" value="<?php echo $quantidadeestoque ?>">
-            <br>
-         </div>
-
-         <div class=" form-group">
-            <label>Categoria</label>
-            <select class="form-control" name="categoriaproduto" required>
-
-               <?php
-
-                  include 'conexao.php';
-                  $sql = "SELECT * FROM categoria order by categoria ASC";
-                  $buscar = mysqli_query($conexao, $sql);
-
-                  while ($array = mysqli_fetch_array($buscar)) {
-
-                     $id_categoria = $array['id_categoria'];
-                     $categoria = $array['categoria'];
+            while ($array = mysqli_fetch_array($buscar)) {
+               $id_estoque = $array['id_estoque'];
+               $nomeproduto = $array['nomeproduto'];
+               $corproduto = $array['corproduto'];
+               $precoproduto = $array['preco'];
+            ?>
 
 
-                  ?>
+            <div class="form-group">
+               <label>ID do Produto</label>
+               <input type="number" name="idproduto" class="form-control" value="<?php echo $id_estoque ?>" disabled>
+               <input type="number" name="id" class="form-control" value="<?php echo $id ?>" style="display: none">
+               <br>
+            </div>
+            <div class="form-group">
+               <label>Nome Produto</label>
+               <input type="text" name="nomeproduto" class="form-control" value="<?php echo $nomeproduto ?>">
+               <br>
+            </div>
 
-               <option><?php echo $categoria ?></option>
+            <div class="form-group">
+               <label>Cor do Produto</label>
+               <input type="text" name="corproduto" class="form-control" value="<?php echo $corproduto ?>">
+               <br>
+            </div>
 
-               <?php } ?>
+            <div class="form-group">
+               <label>Preço</label>
+               <select class="form-control" name="precoproduto" required>
 
-            </select>
-            <br>
-         </div>
+                  <?php
 
+                     include 'conexao.php';
+                     $sql = "SELECT * FROM categoria order by preco ASC";
+                     $buscar = mysqli_query($conexao, $sql);
 
-         <div class=" form-group">
-            <label>Marca</label>
-            <select class="form-control" name="marcaproduto" required>
+                     while ($array = mysqli_fetch_array($buscar)) {
 
-               <?php
-
-                  include 'conexao.php';
-                  $sql = "SELECT * FROM marca order by marca ASC";
-                  $buscar = mysqli_query($conexao, $sql);
-
-                  while ($array = mysqli_fetch_array($buscar)) {
-
-                     $id_marca = $array['id_marca'];
-                     $marca = $array['marca'];
-
-
-                  ?>
-
-               <option><?php echo $marca ?></option>
-
-               <?php } ?>
-            </select>
-         </div>
-
-         <button type="submit" id="button-cadastrar" class="btn btn-warning">Atualizar</button>
-
-         <?php
-         } ?>
-
-      </form>
-   </div>
+                        $id_preco = $array['id_preco'];
+                        $preco = $array['preco'];
 
 
-   <!-- JavaScript Bundle with Popper -->
-   <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-   </script>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
-   </script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-   </script>
+                     ?>
+
+                  <option><?php echo $preco ?></option>
+
+                  <?php } ?>
+
+               </select>
+               <br>
+            </div>
+
+
+
+            <button type="submit" id="button-cadastrar" class="btn btn-warning" style=" background-color: #ededed;
+               color:black; font-size: 17px; font-weight: 600">Atualizar</button>
+
+            <?php
+            } ?>
+
+         </form>
+      </div>
+
+   </center>
 
 </body>
 
