@@ -16,7 +16,7 @@ $inserir = mysqli_query($conexao, $sql);
 
 <div class="container" style="margin-top: 20px">
    <center>
-      <h4>Produto adicionado com sucesso!</h4>
+      <h2>Produto adicionado com sucesso!</h2>
    </center>
    <div style="padding-top: 20px">
       <center>

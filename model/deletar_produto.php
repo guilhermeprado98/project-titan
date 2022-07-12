@@ -14,7 +14,7 @@ $deletar = mysqli_query($conexao, $sql);
 <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
 
 
-<div class="container" style="width: 400px">
+<div class="container" style="padding-top: 20px">
 
    <center>
       <h3>Deletado com sucesso!</h3>

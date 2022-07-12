@@ -29,13 +29,13 @@ require_once 'model/conexao.php';
 
 <body>
 
-   <div class="container" style="margin-top: 50px">
+   <div class="container" style="margin-top: 0px">
 
 
       <center>
 
          <img src="img/logo-titan.jpg" style="width: 10%">
-         <h1>CRUD Produtos</h1>
+         <h2>CRUD Produtos</h2>
       </center>
 
 

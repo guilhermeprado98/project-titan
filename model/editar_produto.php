@@ -61,7 +61,6 @@ $id = $_GET['id'];
                $id_estoque = $array['id_estoque'];
                $nomeproduto = $array['nomeproduto'];
                $corproduto = $array['corproduto'];
-               $precoproduto = $array['preco'];
             ?>
 
 
