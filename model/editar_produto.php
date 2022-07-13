@@ -77,12 +77,6 @@ $id = $_GET['id'];
             </div>
 
             <div class="form-group">
-               <label>Cor do Produto</label>
-               <input type="text" name="corproduto" class="form-control" value="<?php echo $corproduto ?>">
-               <br>
-            </div>
-
-            <div class="form-group">
                <label>Preço</label>
                <select class="form-control" name="precoproduto" required>
 

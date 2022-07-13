@@ -5,11 +5,10 @@ include 'conexao.php';
 $id = $_POST['id'];
 
 $nomeproduto = $_POST['nomeproduto'];
-$corproduto = $_POST['corproduto'];
 $precoproduto = $_POST['precoproduto'];
 
 
-$sql = "UPDATE `estoque` SET `nomeproduto`='$nomeproduto',`corproduto`='$corproduto', `preco`='$precoproduto' WHERE preco = $id";
+$sql = "UPDATE `estoque` SET `nomeproduto`='$nomeproduto',`preco`='$precoproduto' WHERE preco = $id";
 
 
 $atualizar = mysqli_query($conexao, $sql);
