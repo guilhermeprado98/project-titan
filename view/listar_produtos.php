@@ -20,14 +20,23 @@ require_once '../model/conexao.php';
 
    <style>
    .table {
+      border-collapse: collapse;
+      width: 100%;
       border-spacing: 30px;
    }
 
-   table,
    th,
    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
       border: 1px solid black;
       border-collapse: collapse;
+   }
+
+   .form-control {
+      height: 34px;
+      width: 240px;
    }
 
    th,
@@ -123,6 +132,8 @@ require_once '../model/conexao.php';
       color: red;
       border-radius: 5px;
    }
+
+
 
    /* Style toddler input range */
 
@@ -299,6 +310,8 @@ require_once '../model/conexao.php';
                <th><input type="text" id="txtColuna1" /></th>
                <th><input type="text" id="txtColuna2" /></th>
                <th><select class="form-control" id="txtColuna3" name="cor" required>
+                     <option value="">Selecione a cor:</option>
+
 
                      <?php
 
@@ -366,10 +379,10 @@ require_once '../model/conexao.php';
             <td><?php echo $preco ?></td>
 
             <td>
-               <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $preco ?>"
+               <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $id_produto ?>"
                   role="button">
                   <i class="far fa-edit "></i>&nbsp;Editar</a>
-               <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $preco ?>"
+               <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $id_produto ?>"
                   role="button">
                   <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
             </td>
@@ -418,6 +431,35 @@ require_once '../model/conexao.php';
       document.querySelector('#one').value = this.value
    };
    </script>
+
+
+   <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
+   <script>
+   dataset.filter(function(index, item) {
+      return $(item).find('td:first-child').text().split(',').indexOf(selection) === -1;
+   }).hide();
+   </script>
+
+   <script>
+   $(document).ready(function($) {
+      $('table').show();
+      $('#txtColuna3').change(function() {
+         $('table').show();
+         var selection = $(this).val();
+         var dataset = $('#tabela tbody').find('tr');
+         // show all rows first
+         dataset.show();
+         // filter the rows that should be hidden
+         dataset.filter(function(index, item) {
+            return $(item).find('td:first-child').text().split(',').indexOf(selection) === -1;
+         }).hide();
+
+      });
+   });
+   </script>
+
+
 
 </body>
 

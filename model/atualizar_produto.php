@@ -8,7 +8,7 @@ $nomeproduto = $_POST['nomeproduto'];
 $precoproduto = $_POST['precoproduto'];
 
 
-$sql = "UPDATE `estoque` SET `nomeproduto`='$nomeproduto',`preco`='$precoproduto' WHERE preco = $id";
+$sql = "UPDATE `estoque` SET `nomeproduto`='$nomeproduto',`preco`='$precoproduto' WHERE id_estoque = $id";
 
 
 $atualizar = mysqli_query($conexao, $sql);

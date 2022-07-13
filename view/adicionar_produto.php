@@ -75,6 +75,9 @@ require_once '../model/conexao.php';
             <div class=" form-group">
                <label>Preço</label>
                <select class="form-control" name="preco" required>
+                  <option value="">Selecione o preço para o produto.</option>
+
+
 
                   <?php
 

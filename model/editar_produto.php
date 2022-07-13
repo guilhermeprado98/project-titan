@@ -53,7 +53,7 @@ $id = $_GET['id'];
 
             <?php
 
-            $sql = "SELECT * FROM `estoque` WHERE preco = $id";
+            $sql = "SELECT * FROM `estoque` WHERE id_estoque = $id";
 
             $buscar = mysqli_query($conexao, $sql);
 
