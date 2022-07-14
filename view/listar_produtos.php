@@ -11,13 +11,21 @@ require_once '../model/conexao.php';
    <title>Listagem de Produtos</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
    <link rel="icon" href="../img/logo-titan.jpg" type="image/x-icon" />
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-   <script type="text/javascript" src="../script.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="/resources/demos/style.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+   <script>
+   $(function() {
+      $("#slider").slider();
+   });
+   </script>
+
 
 
    <style>
@@ -47,239 +55,6 @@ require_once '../model/conexao.php';
       padding-bottom: 20px;
       padding-left: 30px;
       padding-right: 40px;
-   }
-
-   body {
-      font-family: 'Karla', 'Arial', sans-serif;
-      font-weight: 500;
-      background: #fff;
-   }
-
-   p {
-      padding: 0;
-      margin: 0;
-   }
-
-   .wrapper {
-      height: 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-   }
-
-   .filter-price {
-      width: 50%;
-      border: 0;
-      padding: 0;
-      margin: 0;
-   }
-
-   .price-container {
-      display: flex;
-      border: 1px solid #ccc;
-      padding: 5px;
-      margin-left: 25px;
-      width: 100px;
-
-   }
-
-   .price-field {
-      position: relative;
-      width: 100%;
-      height: 36px;
-      box-sizing: border-box;
-      padding-top: 15px;
-      padding-left: -20px;
-      padding-right: 150px;
-
-   }
-
-   .price-field input[type=range] {
-      position: absolute;
-   }
-
-   /* Reset style for input range */
-
-   .price-field input[type=range] {
-      width: 100%;
-      height: 7px;
-      border: 1px solid #000;
-      outline: 0;
-      box-sizing: border-box;
-      border-radius: 5px;
-      pointer-events: none;
-      -webkit-appearance: none;
-   }
-
-   .price-field input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-   }
-
-   .price-field input[type=range]:active,
-   .price-field input[type=range]:focus {
-      outline: 0;
-   }
-
-   .price-field input[type=range]::-ms-track {
-      width: 188px;
-      height: 2px;
-      border: 0;
-      outline: 0;
-      box-sizing: border-box;
-      border-radius: 5px;
-      pointer-events: none;
-      background: transparent;
-      border-color: transparent;
-      color: red;
-      border-radius: 5px;
-   }
-
-
-
-   /* Style toddler input range */
-
-   .price-field input[type=range]::-webkit-slider-thumb {
-      /* WebKit/Blink */
-      position: relative;
-      -webkit-appearance: none;
-      margin: 0;
-      border: 0;
-      outline: 0;
-      border-radius: 50%;
-      height: 10px;
-      width: 10px;
-      margin-top: -4px;
-      background-color: #fff;
-      cursor: pointer;
-      cursor: pointer;
-      pointer-events: all;
-      z-index: 100;
-   }
-
-   .price-field input[type=range]::-moz-range-thumb {
-      /* Firefox */
-      position: relative;
-      appearance: none;
-      margin: 0;
-      border: 0;
-      outline: 0;
-      border-radius: 50%;
-      height: 10px;
-      width: 10px;
-      margin-top: -5px;
-      background-color: #fff;
-      cursor: pointer;
-      cursor: pointer;
-      pointer-events: all;
-      z-index: 100;
-   }
-
-   .price-field input[type=range]::-ms-thumb {
-      /* IE */
-      position: relative;
-      appearance: none;
-      margin: 0;
-      border: 0;
-      outline: 0;
-      border-radius: 50%;
-      height: 10px;
-      width: 10px;
-      margin-top: -5px;
-      background-color: #242424;
-      cursor: pointer;
-      cursor: pointer;
-      pointer-events: all;
-      z-index: 100;
-   }
-
-   /* Style track input range */
-
-   .price-field input[type=range]::-webkit-slider-runnable-track {
-      /* WebKit/Blink */
-      width: 188px;
-      height: 2px;
-      cursor: pointer;
-      background: #555;
-      border-radius: 5px;
-   }
-
-   .price-field input[type=range]::-moz-range-track {
-      /* Firefox */
-      width: 188px;
-      height: 2px;
-      cursor: pointer;
-      background: #242424;
-      border-radius: 5px;
-   }
-
-   .price-field input[type=range]::-ms-track {
-      /* IE */
-      width: 188px;
-      height: 2px;
-      cursor: pointer;
-      background: #242424;
-      border-radius: 5px;
-   }
-
-   /* Style for input value block */
-
-   .price-wrap {
-      display: flex;
-      color: #242424;
-      font-size: 14px;
-      line-height: 1.2em;
-      font-weight: 400;
-      margin-bottom: 0px;
-   }
-
-   .price-wrap-1,
-   .price-wrap-2 {
-      display: flex;
-      margin-left: 0px;
-   }
-
-   .price-title {
-      margin-right: 5px;
-   }
-
-   .price-wrap_line {
-      margin: 6px 0px 5px 5px;
-   }
-
-   .price-wrap #one,
-   .price-wrap #two {
-      width: 30px;
-      text-align: right;
-      margin: 0;
-      padding: 0;
-      margin-right: 2px;
-      background: 0;
-      border: 0;
-      outline: 0;
-      color: #242424;
-      font-family: 'Karla', 'Arial', sans-serif;
-      font-size: 14px;
-      line-height: 1.2em;
-      font-weight: 400;
-   }
-
-   .price-wrap label {
-      text-align: right;
-      margin-top: 6px;
-      padding-left: 5px;
-   }
-
-   /* Style for active state input */
-
-   .price-field input[type=range]:hover::-webkit-slider-thumb {
-      box-shadow: 0 0 0 0.5px #242424;
-      transition-duration: 0.3s;
-   }
-
-   .price-field input[type=range]:active::-webkit-slider-thumb {
-      box-shadow: 0 0 0 0.5px #242424;
-      transition-duration: 0.3s;
    }
    </style>
 
@@ -334,31 +109,27 @@ require_once '../model/conexao.php';
 
                   </select></th>
                <th>
-                  <div class="wrapper">
-                     <fieldset class="filter-price">
 
-                        <div class="price-field">
-                           <input type="range" min="0" max="500" value="135" id="lower">
-                           <input type="range" min="0" max="500" value="500" id="upper">
-                        </div>
-                        <div class="price-wrap">
 
-                           <div class="price-container">
-                              <div class="price-wrap-1">
 
-                                 <label for="one"></label>
-                                 <input id="one">
-                              </div>
-                              <div class="price-wrap_line">-</div>
-                              <div class="price-wrap-2">
-                                 <label for="two"></label>
-                                 <input id="two">
+                  <div class="row">
 
-                              </div>
-                           </div>
-                        </div>
-                     </fieldset>
+                     <div id="slider" class="price-filter-range" name="rangeInput"></div>
+
+                     <div style="margin:30px auto">
+                        <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price"
+                           class="price-range-field" />
+                        <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price"
+                           class="price-range-field" />
+                     </div>
+
+                     <button class="price-range-search" id="price-range-submit">Search</button>
+
+                     <div id="searchResults" class="search-results-block"></div>
                   </div>
+
+
+
                </th>
             </tr>
          </thead>
@@ -398,87 +169,32 @@ require_once '../model/conexao.php';
 
    </div>
 
-   <script>
-   var lowerSlider = document.querySelector('#lower');
-   var upperSlider = document.querySelector('#upper');
-
-   document.querySelector('#two').value = upperSlider.value;
-   document.querySelector('#one').value = lowerSlider.value;
-
-   var lowerVal = parseInt(lowerSlider.value);
-   var upperVal = parseInt(upperSlider.value);
-
-   upperSlider.oninput = function() {
-      lowerVal = parseInt(lowerSlider.value);
-      upperVal = parseInt(upperSlider.value);
-
-      if (upperVal < lowerVal + 4) {
-         lowerSlider.value = upperVal - 4;
-         if (lowerVal == lowerSlider.min) {
-            upperSlider.value = 4;
-         }
-      }
-      document.querySelector('#two').value = this.value
-   };
-
-   lowerSlider.oninput = function() {
-      lowerVal = parseInt(lowerSlider.value);
-      upperVal = parseInt(upperSlider.value);
-      if (lowerVal > upperVal - 4) {
-         upperSlider.value = lowerVal + 4;
-         if (upperVal == upperSlider.max) {
-            lowerSlider.value = parseInt(upperSlider.max) - 4;
-         }
-      }
-      document.querySelector('#one').value = this.value
-   };
-   </script>
-
-
-   <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
    <script>
-   dataset.filter(function(index, item) {
-      return $(item).find('td:first-child').text().split(',').indexOf(selection) < 0;
-   }).show();
-   </script>
+   $(function() {
 
-   <script>
-   $(document).ready(function($) {
-      $('table').show();
       $('#txtColuna3').change(function() {
-         $('table').show();
-         var selection = $(this).val();
-         var dataset = $('#tabela tbody').find('tr');
-         // show all rows first
-         dataset.show();
-         // filter the rows that should be hidden
-         dataset.filter(function(index, item) {
-            return $(item).find('td:first-child').text().split(',').indexOf(selection) < 0;
-         }).hide();
+         var index = $(this).parent().index();
+         var nth = "#tabela td:nth-child(" + (index + 1).toString() + ")";
+         var selection = $(this).val().toUpperCase();
+         $("#tabela tbody tr").show();
+         $(nth).each(function() { // me mostra onde ta o range
+            if ($(this).text().toUpperCase().indexOf(selection) < 0) {
+               $(this).parent().hide();
+            }
+         })
 
+         $("#tabela select").blur(function() {
+            $(this).val("");
+         });
       });
+
    });
    </script>
-   <!--
-$(function(){
-   $("#tabela input").keyup(function(){
-       var index = $(this).parent().index();
-       var nth = "#tabela td:nth-child("+(index+1).toString()+")";
-       var selection = $(this).val();
-       $("#tabela tbody tr").show();
-       $(nth).each(function(){
-           if($(this).text().toUpperCase().indexOf(selection) < 0){
-               $(this).parent().hide();
-           }
-       });
-   });
 
-   $("#tabela input").blur(function(){
-       $(this).val("");
-   });
-}); -->
 
+   <script type="text/javascript" src="../js/slider.js"></script>
+   <script type="text/javascript" src="../js/script.js"></script>
 
 
 </body>
