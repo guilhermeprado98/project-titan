@@ -5,7 +5,6 @@ $id = $_GET['id'];
 
 ?>
 
-
 <html>
 
 <head>
@@ -98,7 +97,7 @@ $id = $_GET['id'];
 
                      ?>
 
-                  <option>R$<?php echo $preco_format ?></option>
+                  <option><?php echo $preco_format ?></option>
 
                   <?php } ?>
 
