@@ -31,7 +31,7 @@ $inserir = mysqli_query($conexao, $sql);
 
 ?>
 
-<div class="container" style="margin-top: 20px">
+<!-- <div class="container" style="margin-top: 20px">
    <center>
       <h2>Produto adicionado com sucesso!</h2>
    </center>
@@ -46,4 +46,8 @@ $inserir = mysqli_query($conexao, $sql);
    </div>
 
 
-</div>
+</div> -->
+<script>
+javascript: alert('Produto adicionado com Sucesso!');
+javascript: window.location = '../view/adicionar_produto.php';
+</script>

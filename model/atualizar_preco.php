@@ -14,16 +14,7 @@ $atualizar = mysqli_query($conexao, $sql);
 
 ?>
 
-
-<div class="container">
-
-   <center>
-      <h3>Preço atualizado com sucesso!</h3>
-      <a href="../view/listar_precos.php">
-         <button style="background-color: #ededed;
-               color:black; font-size: 17px; font-weight: 600">Voltar aos Preços</button>
-      </a>
-
-   </center>
-
-</div>
+<script>
+javascript: alert('Preço atualizado com Sucesso!');
+javascript: window.location = '../view/listar_precos.php';
+</script>

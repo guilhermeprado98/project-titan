@@ -11,15 +11,7 @@ $deletar = mysqli_query($conexao, $sql);
 
 ?>
 
-<div class="container" style="padding-top: 40px">
-
-   <center>
-      <h3>Deletado com sucesso!</h3>
-
-      <a href="../view/listar_precos.php" class="btn btn-sm btn-warning">
-         <button style="background-color: #ededed; color:black; font-size: 17px; font-weight: 600">Voltar</button>
-      </a>
-
-   </center>
-
-</div>
+<script>
+javascript: alert('Preço adicionado com Sucesso!');
+javascript: window.location = '../view/listar_precos.php';
+</script>
