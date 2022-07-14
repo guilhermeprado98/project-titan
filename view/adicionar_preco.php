@@ -49,7 +49,8 @@
 
             <div class=" form-group">
                <label>Valor do Preço</label>
-               <input type="text" name="categoria" class="form-control" placeholder="Insira o valor do preco" required>
+               <input type="text" name="categoria" class="form-control"
+                  placeholder="Insira em formato decimal. Exemplo: R$10,50 = 10.50 | R$1899,99 = 1899.99" required>
                <br>
             </div>
 

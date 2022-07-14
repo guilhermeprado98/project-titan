@@ -8,7 +8,8 @@ $corproduto = $_POST['corproduto'];
 $preco = $_POST['preco'];
 
 
-$sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`) VALUES ('$nomeproduto','$corproduto',$preco, $id)";
+$sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`) VALUES ('$nomeproduto','$corproduto','$preco', $id)";
+
 
 $inserir = mysqli_query($conexao, $sql);
 

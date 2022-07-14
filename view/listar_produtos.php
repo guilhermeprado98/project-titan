@@ -11,6 +11,8 @@ require_once '../model/conexao.php';
    <title>Listagem de Produtos</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
    <link rel="icon" href="../img/logo-titan.jpg" type="image/x-icon" />
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
@@ -437,8 +439,8 @@ require_once '../model/conexao.php';
 
    <script>
    dataset.filter(function(index, item) {
-      return $(item).find('td:first-child').text().split(',').indexOf(selection) === -1;
-   }).hide();
+      return $(item).find('td:first-child').text().split(',').indexOf(selection) < 0;
+   }).show();
    </script>
 
    <script>
@@ -452,12 +454,30 @@ require_once '../model/conexao.php';
          dataset.show();
          // filter the rows that should be hidden
          dataset.filter(function(index, item) {
-            return $(item).find('td:first-child').text().split(',').indexOf(selection) === -1;
+            return $(item).find('td:first-child').text().split(',').indexOf(selection) < 0;
          }).hide();
 
       });
    });
    </script>
+   <!--
+$(function(){
+   $("#tabela input").keyup(function(){
+       var index = $(this).parent().index();
+       var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+       var selection = $(this).val();
+       $("#tabela tbody tr").show();
+       $(nth).each(function(){
+           if($(this).text().toUpperCase().indexOf(selection) < 0){
+               $(this).parent().hide();
+           }
+       });
+   });
+
+   $("#tabela input").blur(function(){
+       $(this).val("");
+   });
+}); -->
 
 
 

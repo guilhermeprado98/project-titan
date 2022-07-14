@@ -79,6 +79,7 @@ $id = $_GET['id'];
             <div class="form-group">
                <label>Preço</label>
                <select class="form-control" name="precoproduto" required>
+                  <option value="">Selecione o preço para o produto.</option>
 
                   <?php
 
