@@ -25,8 +25,6 @@ if ($corproduto == 'Amarelo') {
 
 $preco_format = number_format($new_price, 2, ',', '.');
 
-
-
 $sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`) VALUES ('$nomeproduto','$corproduto','$preco_format', $id)";
 
 

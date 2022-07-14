@@ -90,15 +90,10 @@ require_once '../model/conexao.php';
                      $id_preco = $array['id_preco'];
                      $preco = $array['preco'];
 
-                     $preco_format = number_format($preco, 2, ',', '.');
-
-
                   ?>
 
 
-
-
-                  <option>R$<?php echo $preco_format ?></option>
+                  <option><?php echo $preco ?></option>
 
                   <?php } ?>
 
