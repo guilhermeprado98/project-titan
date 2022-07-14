@@ -4,8 +4,6 @@ require_once '../model/conexao.php';
 
 ?>
 
-
-
 <html>
 
 <head>
@@ -42,8 +40,6 @@ require_once '../model/conexao.php';
 </head>
 
 <body>
-
-
 
    <div class="container" style="margin-top: 50px; padding-left: 15px">
 

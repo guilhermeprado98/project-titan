@@ -165,6 +165,7 @@ require_once '../model/conexao.php';
 
 
    <script>
+   //Function para filtrar o Select de cor
    $(function() {
 
       $('#txtColuna3').change(function() {
@@ -186,11 +187,10 @@ require_once '../model/conexao.php';
    });
    </script>
 
+
    <script type="text/javascript">
+   //Function Buscar valores do Range
    $(document).ready(function() {
-
-
-
 
       function filterProducts() {
 
@@ -213,7 +213,7 @@ require_once '../model/conexao.php';
 
       }
 
-
+      //Function Slider Range
       $(function() {
          $("#slider").slider({
             range: true,

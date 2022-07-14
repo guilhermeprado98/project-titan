@@ -1,3 +1,4 @@
+//Function para filtrar os input text
 $(function(){
     $("#tabela input").map(function (params) {
         console.log(params);

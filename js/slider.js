@@ -48,9 +48,6 @@
 
       var min_price = $('#min_price').val();
       var max_price = $('#max_price').val();
-
-
     });
-
 
  })(jQuery);
