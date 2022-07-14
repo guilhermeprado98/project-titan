@@ -5,9 +5,11 @@ include 'conexao.php';
 
 $categoria = $_POST['categoria'];
 
-$preco_format = number_format($categoria, 2, ',', '.');
 
-$sql = "INSERT INTO `categoria`(`preco`) VALUES ('R$ $preco_format')";
+
+
+
+$sql = "INSERT INTO `categoria`(`preco`) VALUES ('$categoria')";
 
 
 $inserir = mysqli_query($conexao, $sql);

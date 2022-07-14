@@ -92,10 +92,13 @@ $id = $_GET['id'];
                         $id_preco = $array['id_preco'];
                         $preco = $array['preco'];
 
+                        $preco_format = number_format($preco, 2, ',', '.');
+
+
 
                      ?>
 
-                  <option><?php echo $preco ?></option>
+                  <option>R$<?php echo $preco_format ?></option>
 
                   <?php } ?>
 

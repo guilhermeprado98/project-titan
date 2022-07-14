@@ -110,8 +110,6 @@ require_once '../model/conexao.php';
                   </select></th>
                <th>
 
-
-
                   <div class="row">
 
                      <div id="slider" class="price-filter-range" name="rangeInput"></div>
@@ -122,50 +120,46 @@ require_once '../model/conexao.php';
                         <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price"
                            class="price-range-field" />
                      </div>
-
-                     <button class="price-range-search" id="price-range-submit">Search</button>
-
-                     <div id="searchResults" class="search-results-block"></div>
                   </div>
-
-
 
                </th>
             </tr>
          </thead>
          <tr>
-            <?php
+            <div id="searchResults" class="search-results-block">
+               <?php
 
-            $sql = "SELECT * FROM `estoque`";
-            $busca = mysqli_query($conexao, $sql);
+               $sql = "SELECT * FROM `estoque`";
+               $busca = mysqli_query($conexao, $sql);
 
-            while ($array = mysqli_fetch_array($busca)) {
-               $id_produto = $array['id_estoque'];
-               $nomeproduto = $array['nomeproduto'];
-               $corproduto = $array['corproduto'];
-               $preco = $array['preco'];
-            ?>
+               while ($array = mysqli_fetch_array($busca)) {
+                  $id_produto = $array['id_estoque'];
+                  $nomeproduto = $array['nomeproduto'];
+                  $corproduto = $array['corproduto'];
+                  $preco = $array['preco'];
+               ?>
          <tr>
             <td><?php echo $id_produto ?></td>
             <td><?php echo $nomeproduto ?></td>
             <td> <?php echo $corproduto ?></td>
-            <td><?php echo $preco ?></td>
 
-            <td>
-               <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $id_produto ?>"
-                  role="button">
-                  <i class="far fa-edit "></i>&nbsp;Editar</a>
-               <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $id_produto ?>"
-                  role="button">
-                  <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
-            </td>
+            <td>R$<?php echo $preco ?></td>
+   </div>
 
-         </tr>
-         <?php
-            } ?>
-         </tr>
+   <td>
+      <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $id_produto ?>" role="button">
+         <i class="far fa-edit "></i>&nbsp;Editar</a>
+      <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $id_produto ?>" role="button">
+         <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
+   </td>
 
-      </table>
+   </tr>
+   <?php
+               } ?>
+   </div>
+   </tr>
+
+   </table>
 
    </div>
 
@@ -178,7 +172,7 @@ require_once '../model/conexao.php';
          var nth = "#tabela td:nth-child(" + (index + 1).toString() + ")";
          var selection = $(this).val().toUpperCase();
          $("#tabela tbody tr").show();
-         $(nth).each(function() { // me mostra onde ta o range
+         $(nth).each(function() {
             if ($(this).text().toUpperCase().indexOf(selection) < 0) {
                $(this).parent().hide();
             }
@@ -188,6 +182,66 @@ require_once '../model/conexao.php';
             $(this).val("");
          });
       });
+
+   });
+   </script>
+
+   <script type="text/javascript">
+   $(document).ready(function() {
+
+
+
+
+      function filterProducts() {
+
+         var min_price = $("#min_price").val();
+         var max_price = $("#max_price").val();
+
+         $.ajax({
+            url: "../fetch_data.php",
+            type: "POST",
+            data: {
+               min_price: min_price,
+               max_price: max_price
+            },
+            success: function(data) {
+               $("#searchResults").html(data);
+            }
+
+         });
+
+
+      }
+
+
+      $(function() {
+         $("#slider").slider({
+            range: true,
+            orientation: "horizontal",
+            min: 0,
+            max: 10000,
+            values: [0, 10000],
+            step: 100,
+
+            slide: function(event, ui) {
+               if (ui.values[0] == ui.values[1]) {
+                  return false;
+               }
+
+               $("#min_price").val(ui.values[0]);
+               $("#max_price").val(ui.values[1]);
+
+               filterProducts();
+            }
+         });
+
+         $("#min_price").val($("#slider").slider("values", 0));
+         $("#max_price").val($("#slider").slider("values", 1));
+
+      });
+
+      $("#min_price").val($("#slider").slider("values", 0));
+      $("#max_price").val($("#slider").slider("values", 1));
 
    });
    </script>

@@ -8,7 +8,28 @@ $corproduto = $_POST['corproduto'];
 $preco = $_POST['preco'];
 
 
-$sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`) VALUES ('$nomeproduto','$corproduto','$preco', $id)";
+$desconto1 = 20;
+$desconto2 = 10;
+$desconto3 = 5;
+
+if ($corproduto == 'Azul' || 'Vermelho') {
+   $new_price = $preco - ($preco * $desconto1 / 100);
+}
+if ($corproduto == 'Amarelo') {
+   $new_price = $preco - ($preco * $desconto2 / 100);
+} elseif ($corproduto == 'Vermelho' and $preco > 50) {
+   $new_price = $preco - ($preco * $desconto3 / 100);
+} else {
+   $new_price = $preco;
+}
+
+$preco_format = number_format($new_price, 2, ',', '.');
+
+
+
+$sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`) VALUES ('$nomeproduto','$corproduto','$preco_format', $id)";
+
+
 
 
 $inserir = mysqli_query($conexao, $sql);

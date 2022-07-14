@@ -70,10 +70,12 @@ require_once '../model/conexao.php';
             while ($array = mysqli_fetch_array($busca)) {
                $id_preco = $array['id_preco'];
                $preco = $array['preco'];
+
+               $preco_format = number_format($preco, 2, ',', '.');
             ?>
          <tr>
             <td><?php echo $id_preco ?></td>
-            <td> <?php echo $preco ?></td>
+            <td>R$<?php echo $preco_format ?></td>
 
             <td>
                <a class="btn btn-warning btn-sm" href="../model/editar_preco.php?id=<?php echo $id_preco ?>"
