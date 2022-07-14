@@ -10,8 +10,6 @@ require_once '../model/conexao.php';
 
    <title>Listagem de Produtos</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
-   <link rel="icon" href="../img/logo-titan.jpg" type="image/x-icon" />
-
 
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">

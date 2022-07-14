@@ -11,7 +11,6 @@ require_once '../model/conexao.php';
 
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
-   <link rel="icon" href="../img/logo-titan.jpg" type="image/x-icon" />
 
    <title>Formulário de Cadastro</title>
 

@@ -11,8 +11,6 @@ require_once 'model/conexao.php';
 
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
 
-   <link rel="icon" href="img/logo-titan.jpg" type="image/x-icon" />
-
    <title>CRUD Produto</title>
 
 
@@ -29,12 +27,10 @@ require_once 'model/conexao.php';
 
 <body>
 
-   <div class="container" style="margin-top: 0px">
+   <div class="container" style="margin-top: 50px">
 
 
       <center>
-
-         <img src="img/logo-titan.jpg" style="width: 10%">
          <h2>CRUD Produtos</h2>
       </center>
 
