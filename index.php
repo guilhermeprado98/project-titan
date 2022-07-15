@@ -14,10 +14,10 @@ require_once 'model/conexao.php';
    <title>CRUD Produto</title>
 
 
-   <style>
+   <!-- <style>
    .card-text {
       font-size: 20px;
-   }
+   } -->
    </style>
 
 

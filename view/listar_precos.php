@@ -7,36 +7,10 @@ require_once '../model/conexao.php';
 <html>
 
 <head>
-
    <title>Listagem de Cor</title>
-
-
-
+   <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
+   <link rel="stylesheet" href="../css/style.css">
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
-   <link rel="icon" href="../img/logo-titan.jpg" type="image/x-icon" />
-
-   <style>
-   .table {
-      border-spacing: 30px;
-   }
-
-   table,
-   th,
-   td {
-      border: 1px solid black;
-      border-collapse: collapse;
-   }
-
-   th,
-   td {
-      padding-top: 10px;
-      padding-bottom: 20px;
-      padding-left: 30px;
-      padding-right: 40px;
-   }
-   </style>
-
-
 </head>
 
 <body>

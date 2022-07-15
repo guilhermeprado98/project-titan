@@ -11,28 +11,8 @@ $id = $_GET['id'];
 
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
+   <link rel="stylesheet" href="../css/style.css">
    <title>Formulário de Edição</title>
-
-
-   <style type="text/css">
-   #tamanhoContainer {
-      width: 500px;
-   }
-
-   #button-cadastrar {
-      margin-top: 10px;
-   }
-
-   .form-group {
-      padding-bottom: 20px;
-   }
-
-   .form-control {
-      width: 500px;
-      height: 30px;
-   }
-   </style>
-
 
 </head>
 

@@ -6,27 +6,14 @@ $id = $_GET['id'];
 
 ?>
 
-
 <html>
 
 <head>
 
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
+   <link rel="stylesheet" href="../css/style.css">
    <title>Alterar Preço</title>
-
-
-   <style type="text/css">
-      #tamanhoContainer {
-         width: 500px;
-      }
-
-      #button-cadastrar {
-         margin-top: 10px;
-      }
-   </style>
-
-
 </head>
 
 <body>
@@ -53,18 +40,19 @@ $id = $_GET['id'];
             ?>
 
 
-               <div class="form-group">
-                  <label>Valor Preço</label>
-                  <input type="text" name="categoria" class="form-control" value="<?php echo $preco ?>">
-                  <input type="number" name="id_preco" class="form-control" value="<?php echo $id_preco ?>" style="display: none">
-                  <br>
-               </div>
+            <div class="form-group">
+               <label>Valor Preço</label>
+               <input type="text" name="categoria" class="form-control" value="<?php echo $preco ?>">
+               <input type="number" name="id_preco" class="form-control" value="<?php echo $id_preco ?>"
+                  style="display: none">
+               <br>
+            </div>
 
-               <button type="submit" id="button-cadastrar" class="btn btn-warning" style="background-color: #ededed;
+            <button type="submit" id="button-cadastrar" class="btn btn-warning" style="background-color: #ededed;
                color:black; font-size: 17px; font-weight: 600">Atualizar</button>
-               <div style="text-align: right; margin-top: -35px;">
+            <div style="text-align: right; margin-top: -35px;">
 
-               </div>
+            </div>
 
 
             <?php

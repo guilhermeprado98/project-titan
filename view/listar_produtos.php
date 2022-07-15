@@ -8,23 +8,23 @@ require_once '../model/conexao.php';
 
 <head>
 
-   <title>Listagem de Produtos</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
+   <link rel="stylesheet" href="../css/style.css">
 
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Listagem de Produtos</title>
+
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="/resources/demos/style.css">
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+
    <script>
    $(function() {
       $("#slider").slider();
    });
    </script>
-
-
 
    <style>
    .table {
