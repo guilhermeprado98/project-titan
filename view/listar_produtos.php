@@ -206,7 +206,7 @@ require_once '../model/conexao.php';
             max: 10000, //aqui....ao range min e maximo....
             values: [0, 10000],
             step: 0.01,
-
+            // Function filtrando o range(price)
             slide: function(event, ui) {
                var table = document.getElementById("tabela");
 
@@ -235,26 +235,6 @@ require_once '../model/conexao.php';
       $("#max_price").val($("#slider").slider("values", 1));
 
    });
-   </script>
-
-   <script>
-   // var table = document.getElementById("tabela");
-
-   // for (var i = 1, row; row = table.rows[i]; i++) {
-   //    //iterate through rows (we SKIP the first row: counter starts at 1!)
-   //    for (var j = 0, col; col = row.cells[j]; j++) {
-   //       //iterate through columns: if first column not in range: HIDE, else SHOW
-
-   //       if (j == 0) { // if first column
-   //          if ($(col).html() >= ui.values[0] && $(col).html() <= ui.values[1]) {
-   //             // if in interval
-   //             $(row).show();
-   //          } else {
-   //             $(row).hide();
-   //          }
-   //       }
-   //    }
-   // }
    </script>
 
    <script type="text/javascript" src="../js/slider.js"></script>
