@@ -10,17 +10,8 @@ require_once 'model/conexao.php';
 <head>
 
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
-
    <title>CRUD Produto</title>
-
-
-   <!-- <style>
-   .card-text {
-      font-size: 20px;
-   } -->
-   </style>
-
-
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
