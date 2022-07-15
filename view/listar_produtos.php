@@ -15,9 +15,9 @@ require_once '../model/conexao.php';
 
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-   <link rel="stylesheet" href="/resources/demos/style.css">
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
 
 
    <script>
@@ -25,6 +25,8 @@ require_once '../model/conexao.php';
       $("#slider").slider();
    });
    </script>
+
+
 
    <style>
    .table {
@@ -78,6 +80,7 @@ require_once '../model/conexao.php';
                <th scope="col">Nome do Produto</th>
                <th scope="col">Cor</th>
                <th scope="col">Preço do Produto</th>
+               <th scope="col" style="display: none;">Preço Decimal</th>
                <th scope="col">Ações</th>
 
             </tr>
@@ -113,10 +116,10 @@ require_once '../model/conexao.php';
                      <div id="slider" class="price-filter-range" name="rangeInput"></div>
 
                      <div style="margin:30px auto">
-                        <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price"
+                        <input type="number" min="0" max="9900" oninput="validity.valid||(value='0');" id="min_price"
                            class="price-range-field" />
-                        <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price"
-                           class="price-range-field" />
+                        <input type="number" min="0" max="10000" oninput="validity.valid||(value='10000');"
+                           id="max_price" class="price-range-field" />
                      </div>
                   </div>
 
@@ -124,36 +127,40 @@ require_once '../model/conexao.php';
             </tr>
          </thead>
          <tr>
-            <div id="searchResults" class="search-results-block">
-               <?php
 
-               $sql = "SELECT * FROM `estoque`";
-               $busca = mysqli_query($conexao, $sql);
+            <?php
 
-               while ($array = mysqli_fetch_array($busca)) {
-                  $id_produto = $array['id_estoque'];
-                  $nomeproduto = $array['nomeproduto'];
-                  $corproduto = $array['corproduto'];
-                  $preco = $array['preco'];
-               ?>
-         <tr>
+            $sql = "SELECT * FROM `estoque`";
+            $busca = mysqli_query($conexao, $sql);
+
+            while ($array = mysqli_fetch_array($busca)) {
+               $id_produto = $array['id_estoque'];
+               $nomeproduto = $array['nomeproduto'];
+               $corproduto = $array['corproduto'];
+               $preco = $array['preco'];
+               $preco_decimal = $array['preco_decimal'];
+
+            ?>
+         <tr class="produto">
             <td><?php echo $id_produto ?></td>
             <td><?php echo $nomeproduto ?></td>
             <td> <?php echo $corproduto ?></td>
-
             <td>R$<?php echo $preco ?></td>
-   </div>
+            <td class="preco" style="display:none;"><?php echo $preco_decimal ?></td>
 
-   <td>
-      <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $id_produto ?>" role="button">
-         <i class="far fa-edit "></i>&nbsp;Editar</a>
-      <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $id_produto ?>" role="button">
-         <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
-   </td>
 
-   </tr>
-   <?php
-               } ?>
+            <td>
+               <a class="btn btn-warning btn-sm" href="../model/editar_produto.php?id=<?php echo $id_produto ?>"
+                  role="button">
+                  <i class="far fa-edit "></i>&nbsp;Editar</a>
+               <a class="btn btn-danger btn-sm" href="../model/deletar_produto.php?id=<?php echo $id_produto ?>"
+                  role="button">
+                  <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
+            </td>
+
+         </tr>
+         <?php
+            } ?>
    </div>
    </tr>
 
@@ -190,49 +197,35 @@ require_once '../model/conexao.php';
    //Function Buscar valores do Range
    $(document).ready(function() {
 
-      function filterProducts() {
-
-         var min_price = $("#min_price").val();
-         var max_price = $("#max_price").val();
-
-         $.ajax({
-            url: "../fetch_data.php",
-            type: "POST",
-            data: {
-               min_price: min_price,
-               max_price: max_price
-            },
-            success: function(data) {
-               $("#searchResults").html(data);
-            }
-
-         });
-
-
-      }
-
       //Function Slider Range
       $(function() {
          $("#slider").slider({
             range: true,
             orientation: "horizontal",
             min: 0,
-            max: 10000,
+            max: 10000, //aqui....ao range min e maximo....
             values: [0, 10000],
-            step: 100,
+            step: 0.01,
 
             slide: function(event, ui) {
-               if (ui.values[0] == ui.values[1]) {
-                  return false;
+               var table = document.getElementById("tabela");
+
+               var rows = document.querySelectorAll("#tabela tr.produto");
+
+               console.log(ui.values);
+               for (let i = 0; i < rows.length; i++) {
+                  const row = rows[i];
+                  var preco = parseFloat(row.querySelector(".preco").innerHTML);
+                  console.log(preco);
+                  if (preco >= ui.values[0] && preco <= ui.values[1]) {
+                     $(row).show();
+                  } else {
+                     $(row).hide();
+                  }
                }
 
-               $("#min_price").val(ui.values[0]);
-               $("#max_price").val(ui.values[1]);
-
-               filterProducts();
             }
          });
-
          $("#min_price").val($("#slider").slider("values", 0));
          $("#max_price").val($("#slider").slider("values", 1));
 
@@ -244,6 +237,25 @@ require_once '../model/conexao.php';
    });
    </script>
 
+   <script>
+   // var table = document.getElementById("tabela");
+
+   // for (var i = 1, row; row = table.rows[i]; i++) {
+   //    //iterate through rows (we SKIP the first row: counter starts at 1!)
+   //    for (var j = 0, col; col = row.cells[j]; j++) {
+   //       //iterate through columns: if first column not in range: HIDE, else SHOW
+
+   //       if (j == 0) { // if first column
+   //          if ($(col).html() >= ui.values[0] && $(col).html() <= ui.values[1]) {
+   //             // if in interval
+   //             $(row).show();
+   //          } else {
+   //             $(row).hide();
+   //          }
+   //       }
+   //    }
+   // }
+   </script>
 
    <script type="text/javascript" src="../js/slider.js"></script>
    <script type="text/javascript" src="../js/script.js"></script>

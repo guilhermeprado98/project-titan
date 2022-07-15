@@ -1,3 +1,4 @@
+//Script do slider
 (function ($) {
 
    $('#price-range-submit').hide();
