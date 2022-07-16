@@ -6,6 +6,7 @@ $id = $_POST['id_preco'];
 
 $categoria = $_POST['categoria'];
 
+
 $sql = "UPDATE `categoria` SET `preco` = $categoria WHERE id_preco = $id";
 
 

@@ -7,7 +7,7 @@ require_once '../model/conexao.php';
 <html>
 
 <head>
-   <title>Listagem de Cor</title>
+   <title>Listagem de Preço</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
    <link rel="stylesheet" href="../css/style.css">
    <script src="https://kit.fontawesome.com/d4c221cbd7.js" crossorigin="anonymous"></script>
