@@ -127,20 +127,21 @@ require_once '../model/conexao.php';
             </tr>
          </thead>
          <tr>
+            <div id="SearchResults" class="search-result-blocks">
 
-            <?php
+               <?php
 
-            $sql = "SELECT * FROM `estoque`";
-            $busca = mysqli_query($conexao, $sql);
+               $sql = "SELECT * FROM `estoque`";
+               $busca = mysqli_query($conexao, $sql);
 
-            while ($array = mysqli_fetch_array($busca)) {
-               $id_produto = $array['id_estoque'];
-               $nomeproduto = $array['nomeproduto'];
-               $corproduto = $array['corproduto'];
-               $preco = $array['preco'];
-               $preco_decimal = $array['preco_decimal'];
+               while ($array = mysqli_fetch_array($busca)) {
+                  $id_produto = $array['id_estoque'];
+                  $nomeproduto = $array['nomeproduto'];
+                  $corproduto = $array['corproduto'];
+                  $preco = $array['preco'];
+                  $preco_decimal = $array['preco_decimal'];
 
-            ?>
+               ?>
          <tr class="produto">
             <td><?php echo $id_produto ?></td>
             <td><?php echo $nomeproduto ?></td>
@@ -158,10 +159,13 @@ require_once '../model/conexao.php';
                   <i class="far fa-trash-alt "></i>&nbsp;Excluir</a>
             </td>
 
+
          </tr>
          <?php
-            } ?>
+               } ?>
    </div>
+   </div>
+
    </tr>
 
    </table>
@@ -197,6 +201,15 @@ require_once '../model/conexao.php';
    //Function Buscar valores do Range
    $(document).ready(function() {
 
+
+
+      function FilterProducts() {
+         var min_price = $("#min_price").val();
+         var max_price = $("#max_price").val();
+
+         alert(min_price + max_price);
+      }
+
       //Function Slider Range
       $(function() {
          $("#slider").slider({
@@ -212,7 +225,6 @@ require_once '../model/conexao.php';
 
                var rows = document.querySelectorAll("#tabela tr.produto");
 
-               console.log(ui.values);
                for (let i = 0; i < rows.length; i++) {
                   const row = rows[i];
                   var preco = parseFloat(row.querySelector(".preco").innerHTML);
@@ -224,16 +236,22 @@ require_once '../model/conexao.php';
                   }
                }
 
+               if (ui.values[0] == ui.values[1]) {
+                  return false;
+               }
+
+               $("#min_price").val(ui.values[0]);
+               $("max_price").val(ui.values[1]);
+
+
             }
+
          });
+
          $("#min_price").val($("#slider").slider("values", 0));
          $("#max_price").val($("#slider").slider("values", 1));
 
       });
-
-      $("#min_price").val($("#slider").slider("values", 0));
-      $("#max_price").val($("#slider").slider("values", 1));
-
    });
    </script>
 

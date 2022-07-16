@@ -12,22 +12,30 @@ $desconto1 = 20;
 $desconto2 = 10;
 $desconto3 = 5;
 
-if ($corproduto == 'Azul' || 'Vermelho') {
-   $new_price = $preco - ($preco * $desconto1 / 100);
-}
+
 if ($corproduto == 'Amarelo') {
    $new_price = $preco - ($preco * $desconto2 / 100);
-} elseif ($corproduto == 'Vermelho' and $preco > 50) {
+} elseif ($corproduto == 'Azul') {
+   $new_price = $preco - ($preco * $desconto1 / 100);
+} elseif ($corproduto == 'Vermelho' && $preco < 50) {
+   $new_price = $preco - ($preco * $desconto1 / 100);
+} elseif ($corproduto == 'Vermelho' && $preco > 50) {
    $new_price = $preco - ($preco * $desconto3 / 100);
 } else {
    $new_price = $preco;
 }
 
+
+
 $preco_format = number_format($new_price, 2, ',', '.');
+
+
 
 $sql = "INSERT INTO `estoque`(`nomeproduto`, `corproduto`, `preco`,`id_estoque`,`preco_decimal`) VALUES ('$nomeproduto','$corproduto','$preco_format', $id, '$preco')";
 
+
 $inserir = mysqli_query($conexao, $sql);
+
 ?>
 
 <script>
