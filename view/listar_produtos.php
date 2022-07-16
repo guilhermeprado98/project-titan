@@ -91,22 +91,28 @@ require_once '../model/conexao.php';
                      <option value="">Selecione a cor:</option>
 
 
-                     <?php
+                     <!-- <?php
 
 
-                     $sql = "SELECT * FROM estoque order by corproduto ASC";
-                     $buscar = mysqli_query($conexao, $sql);
+                           $sql = "SELECT * FROM estoque order by corproduto ASC";
+                           $buscar = mysqli_query($conexao, $sql);
 
-                     while ($array = mysqli_fetch_array($buscar)) {
+                           while ($array = mysqli_fetch_array($buscar)) {
 
-                        $cor = $array['corproduto'];
+                              $cor = $array['corproduto'];
 
 
-                     ?>
+                           ?>
 
-                     <option><?php echo $cor ?></option>
+                     <?php } ?> -->
 
-                     <?php } ?>
+
+                     <option>Azul</option>
+                     <option>Vermelho</option>
+                     <option>Preto</option>
+                     <option>Verde</option>
+                     <option>Rosa</option>
+                     <option>Roxo</option>
 
                   </select></th>
                <th>
