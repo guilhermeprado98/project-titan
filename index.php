@@ -11,7 +11,7 @@ require_once 'model/conexao.php';
 
    <meta name="viewport" content="initial-scale=1.0, user-scalabe=no" />
    <title>CRUD Produto</title>
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
