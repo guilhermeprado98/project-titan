@@ -234,7 +234,6 @@ require_once '../model/conexao.php';
                for (let i = 0; i < rows.length; i++) {
                   const row = rows[i];
                   var preco = parseFloat(row.querySelector(".preco").innerHTML);
-                  console.log(preco);
                   if (preco >= ui.values[0] && preco <= ui.values[1]) {
                      $(row).show();
                   } else {
@@ -247,7 +246,7 @@ require_once '../model/conexao.php';
                }
 
                $("#min_price").val(ui.values[0]);
-               $("max_price").val(ui.values[1]);
+               $("#max_price").val(ui.values[1]);
 
 
             }
